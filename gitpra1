@@ -1,0 +1,331 @@
+labuser@labuser-virtual-machine:~$ git --version
+git version 2.34.1
+labuser@labuser-virtual-machine:~$ mkdir test1
+labuser@labuser-virtual-machine:~$ cd test1
+labuser@labuser-virtual-machine:~/test1$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/labuser/test1/.git/
+labuser@labuser-virtual-machine:~/test1$ git config init.defaultBranch master 
+labuser@labuser-virtual-machine:~/test1$ git init
+Reinitialized existing Git repository in /home/labuser/test1/.git/
+labuser@labuser-virtual-machine:~/test1$ echo "test1" > test1
+labuser@labuser-virtual-machine:~/test1$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	test1
+
+nothing added to commit but untracked files present (use "git add" to track)
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change1"
+[master (root-commit) d979828] change1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test1
+labuser@labuser-virtual-machine:~/test1$ 
+labuser@labuser-virtual-machine:~/test1$ git init
+Reinitialized existing Git repository in /home/labuser/test1/.git/
+labuser@labuser-virtual-machine:~/test1$ git remote  -v
+labuser@labuser-virtual-machine:~/test1$ git status
+On branch master
+nothing to commit, working tree clean
+labuser@labuser-virtual-machine:~/test1$ git remote add origin
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=(push|fetch)]
+                          set up remote as a mirror to push to or fetch from
+
+labuser@labuser-virtual-machine:~/test1$ git remote add origin https://github.com/KIRAN-DSK/git_begin.git
+labuser@labuser-virtual-machine:~/test1$ git remote -v
+origin	https://github.com/KIRAN-DSK/git_begin.git (fetch)
+origin	https://github.com/KIRAN-DSK/git_begin.git (push)
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master
+Username for 'https://github.com': KIRAN-DSK
+Password for 'https://KIRAN-DSK@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 222 bytes | 222.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/KIRAN-DSK/git_begin.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ 
+
+labuser@labuser-virtual-machine:~/test1$ echo "secondtext" >test2
+labuser@labuser-virtual-machine:~/test1$ nano test2
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change2"
+[master 72764b0] change2
+ 1 file changed, 2 insertions(+)
+ create mode 100644 test2
+labuser@labuser-virtual-machine:~/test1$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master 
+Username for 'https://github.com': KIRAN-DSK
+Password for 'https://KIRAN-DSK@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 283 bytes | 283.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/KIRAN-DSK/git_begin.git
+   d979828..72764b0  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ 
+
+================================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+==================================================================================
+
+
+labuser@labuser-virtual-machine:~/test1$ git branch
+* master
+labuser@labuser-virtual-machine:~/test1$ git branch branch1
+labuser@labuser-virtual-machine:~/test1$ git checkout branch1
+Switched to branch 'branch1'
+labuser@labuser-virtual-machine:~/test1$ git branch
+* branch1
+  master
+labuser@labuser-virtual-machine:~/test1$ echo "text third" >test3
+labuser@labuser-virtual-machine:~/test1$ echo "4th text" >test3
+labuser@labuser-virtual-machine:~/test1$ echo "the final" >test4
+labuser@labuser-virtual-machine:~/test1$ ls -li
+total 16
+6162014 -rw-rw-r-- 1 labuser labuser  6 Dec 15 09:28 test1
+6160412 -rw-rw-r-- 1 labuser labuser 13 Dec 15 10:14 test2
+6162009 -rw-rw-r-- 1 labuser labuser  9 Dec 15 11:07 test3
+6162140 -rw-rw-r-- 1 labuser labuser 10 Dec 15 11:07 test4
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change4"
+[branch1 e239946] change4
+ 2 files changed, 2 insertions(+)
+ create mode 100644 test3
+ create mode 100644 test4
+labuser@labuser-virtual-machine:~/test1$ git status
+On branch branch1
+nothing to commit, working tree clean
+labuser@labuser-virtual-machine:~/test1$ git push -u origin 
+fatal: The current branch branch1 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin branch1
+
+labuser@labuser-virtual-machine:~/test1$ git push -u origin branch1
+Username for 'https://github.com': KIRAN-DSK
+Password for 'https://KIRAN-DSK@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 350 bytes | 350.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'branch1' on GitHub by visiting:
+remote:      https://github.com/KIRAN-DSK/git_begin/pull/new/branch1
+remote: 
+To https://github.com/KIRAN-DSK/git_begin.git
+ * [new branch]      branch1 -> branch1
+Branch 'branch1' set up to track remote branch 'branch1' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ git branch
+* branch1
+  master
+labuser@labuser-virtual-machine:~/test1$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+labuser@labuser-virtual-machine:~/test1$ git merge branch1
+Updating 72764b0..e239946
+Fast-forward
+ test3 | 1 +
+ test4 | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 test3
+ create mode 100644 test4
+
+===============================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+========================================================================
+
+
+labuser@labuser-virtual-machine:~/test1$ git log 
+commit e239946de6d046bfa8ea33d0a0ec27f23b15fd70 (HEAD -> master, origin/branch1, branch1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sun Dec 15 11:10:04 2024 -0500
+
+    change4
+
+commit 72764b09eb0954d826cd71dbe6579f75aa66366a (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sun Dec 15 10:14:42 2024 -0500
+
+    change2
+
+commit d979828ef8f5cd3eda6d0a5955d6007d4789b7fe
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sun Dec 15 09:30:48 2024 -0500
+
+    change1
+labuser@labuser-virtual-machine:~/test1$ git log -p
+commit e239946de6d046bfa8ea33d0a0ec27f23b15fd70 (HEAD -> master, origin/branch1, branch1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sun Dec 15 11:10:04 2024 -0500
+
+    change4
+
+diff --git a/test3 b/test3
+new file mode 100644
+index 0000000..9bc4e2d
+--- /dev/null
++++ b/test3
+@@ -0,0 +1 @@
++4th text
+diff --git a/test4 b/test4
+new file mode 100644
+index 0000000..f55ccd9
+--- /dev/null
++++ b/test4
+@@ -0,0 +1 @@
++the final
+
+commit 72764b09eb0954d826cd71dbe6579f75aa66366a (origin/master)
+labuser@labuser-virtual-machine:~/test1$ git log --oneline
+e239946 (HEAD -> master, origin/branch1, branch1) change4
+72764b0 (origin/master) change2
+d979828 change1
+labuser@labuser-virtual-machine:~/test1$ 
+
+
+===============================================================================
++++++++  			practice 5	 		++++++++++++++
+================================================================================
+
+labuser@labuser-virtual-machine:~/test1$ cd
+labuser@labuser-virtual-machine:~$ git clone https://github.com/KIRAN-DSK/git_begin.git
+Cloning into 'git_begin'...
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 10 (delta 1), reused 9 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (10/10), done.
+Resolving deltas: 100% (1/1), done.
+labuser@labuser-virtual-machine:~$ ls -li
+total 60
+6029410 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023  Desktop
+6029414 drwxr-xr-x 4 labuser labuser 4096 Dec 14 08:05  Documents
+6029411 drwxr-xr-x 2 labuser labuser 4096 Dec 15 11:11  Downloads
+6036475 -rw-rw-r-- 1 labuser labuser   53 Dec 18  2023  execute.yml
+6162170 drwxrwxr-x 3 labuser labuser 4096 Dec 15 11:30  git_begin
+6030451 -rw-rw-r-- 1 labuser labuser   85 Dec 15 09:52 'git link'
+6161981 drwxrwxr-x 2 labuser labuser 4096 Dec 14 08:04  minni
+6029415 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023  Music
+6029416 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023  Pictures
+6029413 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023  Public
+6030259 drwxrwxr-x 2 labuser labuser 4096 Dec 18  2023  repos
+6029322 drwx------ 6 labuser labuser 4096 Dec 15  2023  snap
+6029412 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023  Templates
+6161030 drwxrwxr-x 3 labuser labuser 4096 Dec 15 11:16  test1
+6029418 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023  Videos
+labuser@labuser-virtual-machine:~$ cd test1
+labuser@labuser-virtual-machine:~/test1$ ls
+test1  test2  test3  test4
+labuser@labuser-virtual-machine:~/test1$ cd
+labuser@labuser-virtual-machine:~$ mkdir kfc
+labuser@labuser-virtual-machine:~$ cd kfc
+labuser@labuser-virtual-machine:~/kfc$ git pull https://github.com/KIRAN-DSK/git_begin.git
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 6 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (6/6), 453 bytes | 226.00 KiB/s, done.
+From https://github.com/KIRAN-DSK/git_begin
+ * branch            HEAD       -> FETCH_HEAD
+error: Updating the following directories would lose untracked files in them:
+	test1
+
+Aborting
+labuser@labuser-virtual-machine:~/kfc$ git pull https://github.com/KIRAN-DSK/git_begin.git master
+From https://github.com/KIRAN-DSK/git_begin
+ * branch            master     -> FETCH_HEAD
+error: Updating the following directories would lose untracked files in them:
+	test1
+
+Aborting
+labuser@labuser-virtual-machine:~/kfc$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/labuser/kfc/.git/
+labuser@labuser-virtual-machine:~/kfc$ git remote -v
+labuser@labuser-virtual-machine:~/kfc$ git pull https://github.com/KIRAN-DSK/git_begin.git 
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 6 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (6/6), 453 bytes | 151.00 KiB/s, done.
+From https://github.com/KIRAN-DSK/git_begin
+ * branch            HEAD       -> FETCH_HEAD
+labuser@labuser-virtual-machine:~/kfc$ git pull https://github.com/KIRAN-DSK/git_begin.git master
+From https://github.com/KIRAN-DSK/git_begin
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+labuser@labuser-virtual-machine:~/kfc$ 
+
+==============================================================================================================
+++++++++++++++++++++++			practice 6 			++++++++++++++++++++++++++++++++++++
+=============================================================================================================
+
+labuser@labuser-virtual-machine:~/kfc$ branch
+Command 'branch' not found, but can be installed with:
+sudo apt install rheolef
+labuser@labuser-virtual-machine:~/kfc$ git branch
+* master
+labuser@labuser-virtual-machine:~/kfc$ ls li
+ls: cannot access 'li': No such file or directory
+labuser@labuser-virtual-machine:~/kfc$ ls -li
+total 8
+6162297 -rw-rw-r-- 1 labuser labuser  6 Dec 15 11:36 test1
+6162298 -rw-rw-r-- 1 labuser labuser 13 Dec 15 11:36 test2
+labuser@labuser-virtual-machine:~/kfc$ git branch m1
+labuser@labuser-virtual-machine:~/kfc$ git checkout m1
+Switched to branch 'm1'
+labuser@labuser-virtual-machine:~/kfc$ echo "hot suace" >addon
+labuser@labuser-virtual-machine:~/kfc$ ls
+addon  test1  test2
+labuser@labuser-virtual-machine:~/kfc$ git checkout master
+Switched to branch 'master'
+labuser@labuser-virtual-machine:~/kfc$ git checkout m1
+Switched to branch 'm1'
+labuser@labuser-virtual-machine:~/kfc$ ls
+addon  test1  test2
+labuser@labuser-virtual-machine:~/kfc$ git rebase master
+Current branch m1 is up to date.
+
+
